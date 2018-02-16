@@ -41,6 +41,10 @@ you've unlocked/completed.
 If other people end up making trackers, I'll probably make some kind of
 page to list them all on the github wiki, or something. 
 
+If you need any support for this thing, you should join the official
+[Distance Discord](https://discord.gg/distance), and send me a ping
+(I'm @TntMatthew#3201). I'll probably be able to help you out. Probably.
+
 ## Differences from the normal game
 - Obviously, as mentioned in the first sentence of this readme, the order
   of the maps and the abilities unlocked have been randomised.
