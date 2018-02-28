@@ -47,7 +47,7 @@ if sys.platform == 'linux' or sys.platform == 'linux2':
 elif sys.platform == 'darwin':
     distdir = os.path.expanduser('~/Library/Application Support/Refract/Distance')
 elif sys.platform == 'windows':
-    distdir = os.path.expanduser('~/My Games/Distance')
+    distdir = os.path.expanduser('~\\Documents\\My Games\\Distance')
 
 # This requires some explanation. It seems the distance module doesn't have
 # setters on the ability settings on the enable triggers, but you CAN
