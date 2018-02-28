@@ -1,4 +1,7 @@
 * Changelog
+** v0.2.1-alpha
+- Fixed the script pointing to the wrong directory if ran on Windows.
+  It should now drop the randomised levels/playlists in the right dir.
 ** v0.2-alpha
 - Added the ~-m~ / ~--maps-only~ option, which will force the default
   ability order (jump > wings > jets), while keeping the maps randomised.
