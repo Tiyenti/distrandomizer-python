@@ -1,4 +1,8 @@
 # distrandomiser - Distance, but Randomised (Alpha)
+
+> **This version of the randomizer is old, and is no longer maintained.
+The new version is a Spectrum plugin, and is available [here](https://github.com/TntMatthew/distrandomizer)**.
+
 This script takes in the Distance Adventure mode maps, and spits out
 a playlist with both the map and ability unlock order randomised -
 abilities are even adjusted so that they logically carry over like they
