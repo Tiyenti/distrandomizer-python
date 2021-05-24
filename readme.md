@@ -1,7 +1,7 @@
 # distrandomiser - Distance, but Randomised (Alpha)
 
 > **This version of the randomizer is old, and is no longer maintained.
-The new version is a Spectrum plugin, and is available [here](https://github.com/TntMatthew/distrandomizer)**.
+The new version is a Spectrum plugin, and is available [here](https://github.com/Tiyenti/distrandomizer)**.
 
 This script takes in the Distance Adventure mode maps, and spits out
 a playlist with both the map and ability unlock order randomised -
@@ -41,13 +41,13 @@ output from when you ran the randomiser.
 For the benefit of yourself, your stream audience, or both, you may
 want to use a tracker of some sort to show what abilities and maps
 you've unlocked/completed.
-[Here's a really simple one](https://tntmatthew.github.io/disttracker).
+[Here's a really simple one](https://tiyenti.github.io/disttracker).
 If other people end up making trackers, I'll probably make some kind of
 page to list them all on the github wiki, or something. 
 
 If you need any support for this thing, you should join the official
 [Distance Discord](https://discord.gg/distance), and send me a ping
-(I'm @TntMatthew#3201). I'll probably be able to help you out. Probably.
+(I'm @Tiyenti#3201). I'll probably be able to help you out. Probably.
 
 ## Differences from the normal game
 - Obviously, as mentioned in the first sentence of this readme, the order
