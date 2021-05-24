@@ -3,7 +3,7 @@ import distance, random, sys, os
 from collections import OrderedDict
 from argparse import ArgumentParser
 
-VERSION = '0.2-alpha'
+VERSION = '1.0-alpha1'
 # ===============
 # PARSE ARGUMENTS
 # ===============
@@ -27,19 +27,38 @@ def debug_print(text):
         print(text, file=sys.stderr)
 
 # Get the directory passed
-leveldir = args.dir + '/'
+leveldir = args.dir + '/maps/'
+
 
 # Level name shorthands, for convenience
-bs = f'{leveldir}broken symmetry.bytes'
-ls = f'{leveldir}lost society.bytes'
-ns = f'{leveldir}negative space.bytes'
-de = f'{leveldir}departure.bytes'
-gz = f'{leveldir}ground zero.bytes'
-af = f'{leveldir}aftermath.bytes'
-fr = f'{leveldir}friction.bytes'
-ma = f'{leveldir}the thing about machines.bytes'
-co = f'{leveldir}corruption.bytes'
-mo = f'{leveldir}monolith.bytes'
+# bs = f'{leveldir}broken symmetry.bytes'
+# ls = f'{leveldir}ost society.bytes'
+# ns = f'{leveldir}negative space.bytes'
+# de = f'{leveldir}departure.bytes'
+# gz = f'{leveldir}ground zero.bytes'
+# af = f'{leveldir}aftermath.bytes'
+# fr = f'{leveldir}friction.bytes'
+# ma = f'{leveldir}the thing about machines.bytes'
+# co = f'{leveldir}corruption.bytes'
+# mo = f'{leveldir}monolith.bytes'
+
+# Adventure levels
+cata = f'{leveldir}adventure/cataclysm.bytes'
+diver = f'{leveldir}adventure/diversion.bytes'
+eupho = f'{leveldir}adventure/euphoria.bytes'
+entan = f'{leveldir}adventure/entanglement.bytes'
+auto = f'{leveldir}adventure/automation.bytes'
+abyss = f'{leveldir}adventure/abyss.bytes'
+embers = f'{leveldir}adventure/embers.bytes'
+isolation = f'{leveldir}adventure/isolation.bytes'
+repul = f'{leveldir}adventure/repulsion.bytes'
+compre = f'{leveldir}adventure/compression.bytes'
+research = f'{leveldir}adventure/research.bytes'
+conta = f'{leveldir}adventure/contagion.bytes'
+overload = f'{leveldir}adventure/overload.bytes'
+ascension = f'{leveldir}adventure/ascension.bytes'
+enemy = f'{leveldir}adventure/enemy.bytes'
+credits = f'{leveldir}adventure/enemy.bytes'
 
 # Get the location of the Distance directory
 if sys.platform == 'linux' or sys.platform == 'linux2':
@@ -57,10 +76,10 @@ elif sys.platform == 'windows':
 # ...This is the most ridiculous hack I think I've ever written.
 # Desperate times call for desperate measures, indeed... at least
 # it works?
-for lvl in [ls, de, af]:
+for lvl in [diver, entan, embers]:
     lvlbytes = distance.Level(lvl)
     for obj in lvlbytes.layers[0].objects:
-        if obj.type == 'EnableAbilitiesBox':
+        if obj.type == 'SetAbilitiesTrigger':
             if obj.abilities['EnableJumping'] == 1:
                 jump_abox = obj
             elif obj.abilities['EnableFlying'] == 1:
@@ -69,7 +88,7 @@ for lvl in [ls, de, af]:
                 jets_abox = obj
 
 
-available_levels = [bs, ls, ns, de, gz, af, fr, ma, co, mo]
+available_levels = [cata, diver, eupho, entan, auto, abyss, embers, isolation, repul, compre, research, conta, overload, ascension]
 available_abilities = ['EnableJumping', 'EnableJetRotating',
                        'EnableFlying']
 
@@ -93,10 +112,10 @@ if args.all:
 else:
     #requires_jets = [fr, ma, co]
     requires_jets = []
-    requires_jump = [ns, af, ma, mo]
-    requires_boost = [de, gz, af]
+    requires_jump = [eupho, abyss, isolation, repul, research, conta, overload]
+    requires_boost = []
     # These can be done with jets as well.
-    requires_wings = [fr, ma, gz, mo, af]
+    requires_wings = [entan, auto, abyss, embers, isolation, repul, compre, research, conta, overload, ascension]
 
 if args.seed:
     seed = args.seed
@@ -133,7 +152,9 @@ ability_trigger_count = 0
 
 debug_print(ability_order)
 
-while len(tracked_levels) != 10:
+# Adventure map count: 14 on standard 16 on full
+
+while len(tracked_levels) != 14:
     level = available_levels[random.randint(0,len(available_levels) - 1)]
 
     if level not in tracked_levels:
@@ -162,12 +183,12 @@ while len(tracked_levels) != 10:
                             'InfoAndIndicatorDisplayBox']
         objects = [obj for obj in lvlbytes.layers[0].objects if obj.type not in unwanted_objects]
 
-        origabox = next((obj for obj in objects if obj.type == 'EnableAbilitiesBox'), None)
+        origabox = next((obj for obj in objects if obj.type == 'SetAbilitiesTrigger'), None)
         if origabox != None:
             if len(tracked_abilities) < 3:
                 ability = ability_order[len(tracked_abilities)]
                 if ability == 'EnableJumping':
-                    if level == de:
+                    if level == entan:
                         if not jets_enabled and not wings_enabled:
                             debug_print('level can\'t give jump; it needs flight')
                             continue
@@ -241,11 +262,11 @@ playlisttext = f'<!-- Distrandomiser Settings\nSeed: {seed}\n' + \
 runs = 0
 for level in tracked_levels:
     runs += 1
-    playlisttext += '<GameMode>9</GameMode>\n' + \
+    playlisttext += '<GameMode>1</GameMode>\n' + \
                     '<LevelName>???</LevelName>\n' + \
                     f'<LevelPath>MyLevels/randomiser{runs}.bytes</LevelPath>\n'
 
-playlisttext += '<GameMode>9</GameMode>\n' + \
+playlisttext += '<GameMode>1</GameMode>\n' + \
                     '<LevelName>???</LevelName>\n' + \
                     f'<LevelPath>OfficialLevels/destination unknown.bytes</LevelPath>\n' + \
                     '<GameMode>9</GameMode>\n' + \
