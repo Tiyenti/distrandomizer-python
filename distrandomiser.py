@@ -65,7 +65,7 @@ if sys.platform == 'linux' or sys.platform == 'linux2':
     distdir = os.path.expanduser('~/.config/refract/Distance')
 elif sys.platform == 'darwin':
     distdir = os.path.expanduser('~/Library/Application Support/Refract/Distance')
-elif sys.platform == 'windows':
+elif sys.platform == 'windows' or sys.platform == "win32":
     distdir = os.path.expanduser('~\\Documents\\My Games\\Distance')
 
 # This requires some explanation. It seems the distance module doesn't have
@@ -78,14 +78,15 @@ elif sys.platform == 'windows':
 # it works?
 for lvl in [diver, entan, embers]:
     lvlbytes = distance.Level(lvl)
-    for obj in lvlbytes.layers[0].objects:
-        if obj.type == 'SetAbilitiesTrigger':
-            if obj.abilities['EnableJumping'] == 1:
-                jump_abox = obj
-            elif obj.abilities['EnableFlying'] == 1:
-                wings_abox = obj
-            elif obj.abilities['EnableJetRotating'] == 1:
-                jets_abox = obj
+    for layer in lvlbytes.layers:
+        for obj in layer.objects:
+            if obj.type == 'SetAbilitiesTrigger':
+                if obj.enable_jumping == 1:
+                    jump_abox = obj
+                if obj.enable_flying == 1:
+                    wings_abox = obj
+                if obj.enable_jet_rotating == 1:
+                    jets_abox = obj
 
 
 available_levels = [cata, diver, eupho, entan, auto, abyss, embers, isolation, repul, compre, research, conta, overload, ascension]
