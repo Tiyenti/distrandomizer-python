@@ -62,7 +62,7 @@ If you need any support for this thing, you should join the official
 First, you need to aquire the randomiser script, and install the
 dependencies required to use it:
 
-    $ git clone https://github.com/TntMatthew/distrandomiser.git
+    $ git clone https://github.com/Tiyenti/distrandomizer-python.git
     $ pip install distanceutils numpy numpy-quaternion
     
 After that, you need to get the .bytes files of the original Adventure
