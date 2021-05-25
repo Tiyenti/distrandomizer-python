@@ -5,11 +5,10 @@ The randomizer is somewhat working right now but it is unfinished, untested, and
 some bugs. Further experimentation is also planned as I plan to expand the randomizer further
 with additional options, to allow for more customization and variety than is possible right now:
 
-- [ ] Expand the randomizer map selection to include more than just Adventure mode for
-      futher variety.
-      - [ ] "Open" mode: Maps from all four campaign sets (Adv, LtE, Nexus, Legacy) appear
-      - [x] Adventure only
-      - [ ] Legacy only
+- [ ] Expand the randomizer map selection to include more than just Adventure mode for futher variety.
+    - [ ] "Open" mode: Maps from all four campaign sets (Adv, LtE, Nexus, Legacy) appear
+    - [x] Adventure only
+    - [ ] Legacy only
 - [ ] Add more options to customize the ability order:
   - [x] All randomized
   - [ ] Start with jets, but wings/jump randomized
