@@ -182,7 +182,7 @@ while len(tracked_levels) != 14:
         unwanted_objects = ['AdventureAbilitySettings', 'WingCorruptionZone',
                             'WingCorruptionZoneLarge', 'InfoDisplayBox',
                             'InfoAndIndicatorDisplayBox']
-        objects = [obj for obj in lvlbytes.layers[0].objects if obj.type not in unwanted_objects]
+        objects = [obj for layer in lvlbytes.layers for obj in layer.objects if obj.type not in unwanted_objects]
 
         origabox = next((obj for obj in objects if obj.type == 'SetAbilitiesTrigger'), None)
         # if a SetAbilitiesTrigger cannot be found, try searching for an EnableAbilitiesTrigger
