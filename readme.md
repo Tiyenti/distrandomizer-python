@@ -1,79 +1,39 @@
-# distrandomiser - Distance, but Randomised (Alpha)
+# distrandomizer 1.0 - Distance, but Randomised (Alpha)
 
-> **This version of the randomizer is old, and is no longer maintained.
-The new version is a Spectrum plugin, and is available [here](https://github.com/Tiyenti/distrandomizer)**.
+This is a preview/heavily WIP version of an updated form of distrandomizer for Distance 1.0.
+The randomizer is somewhat working right now but it is unfinished, untested, and probably has
+some bugs. Further experimentation is also planned as I plan to expand the randomizer further
+with additional options, to allow for more customization and variety than is possible right now:
 
-This script takes in the Distance Adventure mode maps, and spits out
-a playlist with both the map and ability unlock order randomised -
-abilities are even adjusted so that they logically carry over like they
-would if the maps were actually played in that order. This can be used
-when racing the game, to make it just a little bit more interesting for
-those who have played the game to death.
+- [ ] Expand the randomizer map selection to include more than just Adventure mode for
+      futher variety.
+      - [ ] "Open" mode: Maps from all four campaign sets (Adv, LtE, Nexus, Legacy) appear
+      - [x] Adventure only
+      - [ ] Legacy only
+- [ ] Add more options to customize the ability order:
+  - [x] All randomized
+  - [ ] Start with jets, but wings/jump randomized
+  - [x] Fixed ability order (Jump > Flights > Jets)
+  - [ ] Campaign+ mode, start with everything
+  - [ ] Arcade mode, disable map ability progression and uses whatever the map natively specified.
 
-Absolutely nobody asked for this, but guess what? I made it anyway.
+Note that these plans are subject to change however as I am not sure what I think makes sense to include.
 
-As you can probably expect, this is inspired by various game randomisers
-such as [ALTTP Randomiser](http://vt.alttp.run). You're probably wondering
-why I decided to adapt an action-adventure game mode into a much more
-linear game, and I can't actually answer that - I don't know. But it
-exists!
+Other planned improvements include updating the randomizer logic to match the Spectrum randomizer mod also made by
+me, and add some interactive settings customization on the script to improve the user experience.
 
-This is currently in alpha. Most of the core functionality is there
-and works reasonbly well, however it may need tweaking, the code could
-be cleaner, and there's obviously more features I want to add. Plus,
-Distance itself is currently in beta - this will need to be updated to
-support the finished Adventure mode once it is completed, so it doesn't
-really make sense to call this a full, stable release until that happens.
-
-As of right now, there's no real options so to speak, besides seed.
-I plan to have more options available in the future, as well as the
-ability to generate customised games, not just randomised ones.
-
-It shouldn't be possible to get stuck with the current algorithm, but
-you may need to use techs like wallshoving (pushing yourself against
-walls to leave the track), which may be tricky or unpredictable. Again,
-alpha; this is still somewhat experimental. If you're certain you've
-ran into a softlock and can't progress, make a new issue here so I can
-check that out - remember to include the seed! You can recover it in
-your generated randomiser.xml playlist file, or by looking at the script
-output from when you ran the randomiser.
-
-For the benefit of yourself, your stream audience, or both, you may
-want to use a tracker of some sort to show what abilities and maps
-you've unlocked/completed.
-[Here's a really simple one](https://tiyenti.github.io/disttracker).
-If other people end up making trackers, I'll probably make some kind of
-page to list them all on the github wiki, or something. 
-
-If you need any support for this thing, you should join the official
-[Distance Discord](https://discord.gg/distance), and send me a ping
-(I'm @Tiyenti#3201). I'll probably be able to help you out. Probably.
-
-## Differences from the normal game
-- Obviously, as mentioned in the first sentence of this readme, the order
-  of the maps and the abilities unlocked have been randomised.
-- Boost is enabled by default, you do not need to pick it up at an
-  ability trigger.
-- Wing corruption zones have been removed to allow for more variety.
-- All ability tutorial text triggers have been removed, because you
-  don't need to learn how to play the game when you're doing randomiser.
-
-## How to Use
+## Running the randomzier
 First, you need to aquire the randomiser script, and install the
 dependencies required to use it:
 
     $ git clone https://github.com/Tiyenti/distrandomizer-python.git
     $ pip install distanceutils numpy numpy-quaternion
     
-After that, you need to get the .bytes files of the original Adventure
-maps. You can do this for most of them by simply opening them in the
-editor and saving them as a new file. Don't worry about getting a hold
-of Destination Unknown or the Credits level, these are always added
-to the end of the playlist unmodified (mostly for ease of use, the
-fact it doesn't make sense to have the ending in the middle of the run,
-and nobody wants a minute long cutscene in the middle of their game).
+After that, you need to get the .bytes files of the original maps, and place them
+in the `/maps/adventure/` subdirectory where the script is located. This should be
+pre-bundled with the official builds of the randomizer once those are ready.
 
-Once you have the map files, you can run the randomiser script
+Once you have the map files, you can run the randomizer script
 with Python.
 
     $ python distrandomiser.py [-s [seed]] [dir_of_level_files]
@@ -85,5 +45,5 @@ into your MyLevels directory with the filenames `randomiser1` through
 `randomiser10`. (Don't worry, all mode tags are stripped so they won't
 clog up your my levels list ingame.) A playlist file, `randomiser.xml`,
 will also be generated and automatically put into the LevelPlaylists
-directory. When you want to play your randomised game, go to any Arcade
-level select, open the playlist list, and select randomiser.
+directory. When you want to play your randomised game, go to the Sprint
+mode level select and use the **Randomiser** playlist.
